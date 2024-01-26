@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-chromedriver = "C:\\Users\\USER\\Desktop\\CITAS_Selenium\\chromedriver.exe"
+chromedriver = "C:\\path\\to\\chromedriver.exe"
 
 s = Service(chromedriver)
 
@@ -25,9 +25,12 @@ driver.get("url")
 shadow_host = driver.find_element(By.CSS_SELECTOR,"first shadow root element")
 time.sleep(15)
 shadow_root = shadow_host.shadow_root
+#now you're in the top level shadow DOM tree
 shadow_content = shadow_root.find_element(By.CSS_SELECTOR, "second shadow root element")
+#now you're in the nested shadow DOM tree
 iframe = shadow_content.find_element(By.CSS_SELECTOR, "iframe element")
 driver.switch_to.frame(iframe)
+#now you're in the iframe
 req = driver.find_element(By.ID, "id of what you want to read")
 val = req.get_attribute("value") #gets the content of the value tag
 print(val)
