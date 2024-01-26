@@ -21,7 +21,7 @@ driver.implicitly_wait(60)
 
 driver.get("url")
 
-#SHADOW DOM w/ifram
+#SHADOW DOM w/iframe - only use CSS selectors where By.CSS_SELECTOR is used, do not use XPATH or other types
 shadow_host = driver.find_element(By.CSS_SELECTOR,"first shadow root element")
 time.sleep(15)
 shadow_root = shadow_host.shadow_root
